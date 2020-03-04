@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  username:string = '';
-  password:string = '';
+  username:string = ''
+  password:string = ''
   badCreds:string = 'Invalid Credentials' 
   invalidLogin:boolean = false
 
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   handleLogin() {
     if(this.username === 'Orion' && this.password === 'pass') {
       //Redirect to Welcome Page
-      this.router.navigate(['welcome'])
+      this.router.navigate(['welcome', this.username])
       this.invalidLogin = false
     } else {
       this.invalidLogin = true

@@ -3,6 +3,7 @@
 //import org.springframework.boot.SpringApplication;
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -12,15 +13,14 @@ import { AppComponent } from '../app.component';
 
 export class WelcomeComponent implements OnInit {
 
-  message : string = 'Some Welcome Message'
+  name:string = ''
 
-  constructor() {
+  constructor(private route:ActivatedRoute) {
 
   }
 
   ngOnInit() {
-    // this.message = 'Hello'
-    console.log(this.message)
+    this.name = this.route.snapshot.params['name'];
   }
 
 }
