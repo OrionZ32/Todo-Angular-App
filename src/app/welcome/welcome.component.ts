@@ -14,6 +14,7 @@ import { WelcomeDataService } from '../service/data/welcome-data.service';
 
 export class WelcomeComponent implements OnInit {
 
+  welcomeMessageFromService:String;
   name:string = ''
 
   constructor(
@@ -28,7 +29,15 @@ export class WelcomeComponent implements OnInit {
   }
 
   getWelcomeMessage() {
-    this.service.executeHelloWorldBeanService();
+    console.log(this.service.executeHelloWorldBeanService());
+    this.service.executeHelloWorldBeanService().subscribe(
+      response => this.handleSuccessfulResponse(response)
+    );
+    console.log('last line of getWelcomeMessage');
+  }
+
+  handleSuccessfulResponse(response) {
+    this.welcomeMessageFromService = response.message;
   }
 
 }
