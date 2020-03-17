@@ -14,7 +14,7 @@ import { WelcomeDataService } from '../service/data/welcome-data.service';
 
 export class WelcomeComponent implements OnInit {
 
-  welcomeMessageFromService:String;
+  welcomeMessageFromService:string;
   name:string = ''
 
   constructor(
