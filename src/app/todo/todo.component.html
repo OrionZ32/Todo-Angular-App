@@ -1,9 +1,8 @@
 <button class="btn btn-primary" routerLink="/todos">Back</button> <span></span> <h1>Todo</h1>
 
 <div class="container">
+    
     <div class="alert alert-warning" *ngIf="todoForm.invalid">Fill out required fields</div>
-    <!-- <div class="alert alert-warning" *ngIf="targetDate.invalid">Fill out date field</div>
-    <div class="alert alert-warning" *ngIf="description.invalid">Fill out description field</div> -->
     
     <form (ngSubmit)="!todoForm.invalid && saveTodo()" #todoForm="ngForm">
 
