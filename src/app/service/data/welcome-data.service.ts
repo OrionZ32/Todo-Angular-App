@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { API_URL } from 'src/app/app.constant';
 
 export class HelloWorldBean {
   constructor (public message:string) { }
@@ -15,24 +16,26 @@ export class WelcomeDataService {
   ) { }
 
   executeHelloWorldBeanService() {
-    return this.http.get<HelloWorldBean>('http://localhost:8080/hello-world-bean');
+    return this.http.get<HelloWorldBean>(`${API_URL}/hello-world-bean`);
   }
 
   executeHelloWorldServieWithPathVariable(name) {
-    let basicAuthHeaderString = this.createBasicAuthenticationHttpHeader();
+    // let basicAuthHeaderString = this.createBasicAuthenticationHttpHeader();
 
-    let header = new HttpHeaders({
-      Authorization:basicAuthHeaderString
-    })
+    // let header = new HttpHeaders({
+    //   Authorization:basicAuthHeaderString
+    // })
 
-    return this.http.get<HelloWorldBean>(`http://localhost:8080/hello-world/path-variable/${name}`, {headers : header});
+    return this.http.get<HelloWorldBean>(`${API_URL}/hello-world/path-variable/${name}`, 
+    //{headers}
+    );
   }
 
-  createBasicAuthenticationHttpHeader() {
-    let username = 'orion'
-    let password = 'pass'
-    let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
+  // createBasicAuthenticationHttpHeader() {
+  //   let username = 'orion'
+  //   let password = 'pass'
+  //   let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
 
-    return basicAuthHeaderString;
-  }
+  //   return basicAuthHeaderString;
+  // }
 }
